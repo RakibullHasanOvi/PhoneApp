@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 // ignore: must_be_immutable
 class ContactN extends StatelessWidget {
@@ -9,75 +10,73 @@ class ContactN extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.only(
-        left: 30,
+      padding: EdgeInsets.only(
+        left: 23.w,
       ),
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           Container(
-            height: 40,
-            width: 40,
+            height: 32.h,
+            width: 36.w,
             decoration: BoxDecoration(
               color: Colors.blue.shade300,
               borderRadius: BorderRadius.circular(
-                10,
+                10.r,
               ),
             ),
             child: Center(
               child: Text(
                 text,
-                style: const TextStyle(
-                  fontSize: 20,
+                style: TextStyle(
+                  fontSize: 18.sp,
                   color: Colors.white,
                   fontWeight: FontWeight.bold,
                 ),
               ),
             ),
           ),
-          const SizedBox(
-            width: 20,
+          SizedBox(
+            width: 1.w,
           ),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
                 label,
-                style: const TextStyle(
-                  fontSize: 17,
+                style: TextStyle(
+                  fontSize: 13.sp,
                   color: Colors.black,
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              const SizedBox(
-                height: 5,
+              SizedBox(
+                height: 2.h,
               ),
-              const Text(
+              Text(
                 '01302172187',
-                style: TextStyle(fontSize: 12),
+                style: TextStyle(fontSize: 12.sp),
               ),
             ],
           ),
           Padding(
-            padding: const EdgeInsets.only(left: 80),
+            padding: EdgeInsets.only(left: 70.w),
             child: Icon(
               Icons.call,
-              size: 30,
+              size: 28.sp,
               color: Colors.blue.shade400,
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.only(left: 10),
-            child: Icon(
-              Icons.video_call,
-              size: 35,
-              color: Colors.blue.shade400,
-            ),
+          Icon(
+            Icons.video_call,
+            size: 35.sp,
+            color: Colors.blue.shade400,
           ),
           Padding(
-            padding: const EdgeInsets.only(left: 10),
+            padding: EdgeInsets.only(right: 20.w),
             child: Icon(
               Icons.message,
-              size: 30,
+              size: 25.sp,
               color: Colors.blue.shade400,
             ),
           )

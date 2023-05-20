@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 // ignore: must_be_immutable
 class PC extends StatelessWidget {
@@ -18,16 +19,16 @@ class PC extends StatelessWidget {
           children: [
             Icon(
               icon,
-              size: 30,
+              size: 30.sp,
               color: Colors.blue.shade400,
             ),
-            const SizedBox(
-              width: 20,
+            SizedBox(
+              width: 20.w,
             ),
             Text(
               text,
-              style: const TextStyle(
-                fontSize: 14,
+              style: TextStyle(
+                fontSize: 13.sp,
               ),
             ),
           ],

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:phone_call_app/pages/calling_page.dart';
 
 import '../widgets/contact_w.dart';
@@ -32,258 +33,271 @@ class _DialPadScreenState extends State<DialPadScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Container(
-            height: MediaQuery.of(context).size.height / 18,
-            width: MediaQuery.of(context).size.width,
-            margin: const EdgeInsets.only(
-              top: 40,
-              left: 30,
-              right: 30,
-            ),
-            decoration: BoxDecoration(
-              color: Colors.grey.shade300,
-              borderRadius: BorderRadius.circular(10),
-            ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Icon(
-                  Icons.search_sharp,
-                  color: Colors.blue.shade300,
-                  size: 35,
-                ),
-                const SizedBox(
-                  width: 2,
-                ),
-                const Text('Search contacts and places'),
-                const SizedBox(
-                  width: 30,
-                ),
-                Icon(
-                  Icons.mic,
-                  color: Colors.blue.shade300,
-                  size: 30,
-                ),
-                Icon(
-                  Icons.qr_code_scanner_sharp,
-                  color: Colors.blue.shade300,
-                  size: 30,
-                ),
-                Icon(
-                  Icons.more_vert,
-                  color: Colors.blue.shade300,
-                  size: 30,
-                ),
-              ],
-            ),
-          ),
-          PC(
-            icon: Icons.person_search_rounded,
-            text: 'Create New Contacts',
-          ),
-          PC(
-            icon: Icons.person_add_alt_1,
-            text: 'Add New Contacts',
-          ),
-          PC(
-            icon: Icons.message,
-            text: 'Send Message',
-          ),
-          const SizedBox(
-            height: 10,
-          ),
-          const Padding(
-            padding: EdgeInsets.only(
-              left: 30,
-              top: 10,
-              bottom: 20,
-            ),
-            child: Text(
-              'Suggested Contacts',
-              style: TextStyle(
-                fontSize: 15,
-                color: Colors.black,
-                fontWeight: FontWeight.bold,
+    return SafeArea(
+      child: Scaffold(
+        body: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+//? This Container widget use for (SearchBox design)..
+            Container(
+              padding: EdgeInsets.only(
+                top: 5.h,
+                left: 2.w,
+                bottom: 5.h,
+                right: 2.w,
               ),
-            ),
-          ),
-          //!
-          ContactN(text: 'N', label: 'Nusrat'),
-          const SizedBox(
-            height: 10,
-          ),
-          ContactN(text: 'R', label: 'Ritu'),
-          const SizedBox(
-            height: 10,
-          ),
-          ContactN(text: 'S', label: 'Sweety'),
-          const SizedBox(
-            height: 15,
-          ),
-
-          //?
-          Container(
-            color: Colors.grey.shade300,
-            alignment: Alignment.centerRight,
-            padding: const EdgeInsets.all(16.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                Text(
-                  phoneNumber,
-                  style: const TextStyle(
-                      fontSize: 32.0, fontWeight: FontWeight.bold),
-                ),
-                const SizedBox(
-                  width: 20,
-                ),
-                IconButton(
-                  onPressed: () {
-                    setState(
-                      () {
-                        if (phoneNumber.isNotEmpty) {
-                          phoneNumber =
-                              phoneNumber.substring(0, phoneNumber.length - 1);
-                        }
-                      },
-                    );
-                  },
-                  icon: const Icon(
-                    Icons.backspace_outlined,
-                    size: 30,
-                  ),
-                ),
-              ],
-            ),
-          ),
-          const Divider(height: 1, color: Colors.grey),
-          Expanded(
-            child: Container(
-              color: Colors.grey.shade300,
-              child: Column(
+              margin: EdgeInsets.only(
+                top: 20.h,
+                left: 20.w,
+                right: 20.w,
+              ),
+              decoration: BoxDecoration(
+                color: Colors.grey.shade300,
+                borderRadius: BorderRadius.circular(10.r),
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  Expanded(
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        _buildNumberButton('1'),
-                        _buildNumberButton('2'),
-                        _buildNumberButton('3'),
-                      ],
-                    ),
+                  Icon(
+                    Icons.search_sharp,
+                    color: Colors.blue.shade300,
+                    size: 30.sp,
                   ),
-                  Expanded(
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        _buildNumberButton('4'),
-                        _buildNumberButton('5'),
-                        _buildNumberButton('6'),
-                      ],
-                    ),
+                  SizedBox(
+                    width: 2.w,
                   ),
-                  Expanded(
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        _buildNumberButton('7'),
-                        _buildNumberButton('8'),
-                        _buildNumberButton('9'),
-                      ],
-                    ),
+                  Text(
+                    'Search contacts and places',
+                    style: TextStyle(fontSize: 12.sp),
                   ),
-                  Expanded(
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        _buildNumberButton('*'),
-                        _buildNumberButton('0'),
-                        _buildNumberButton('#'),
-                      ],
-                    ),
+                  SizedBox(
+                    width: 35.w,
                   ),
-                  const SizedBox(
-                    height: 10,
-                  )
+                  Icon(
+                    Icons.mic,
+                    color: Colors.blue.shade300,
+                    size: 25.sp,
+                  ),
+                  Icon(
+                    Icons.qr_code_scanner_sharp,
+                    color: Colors.blue.shade300,
+                    size: 25.sp,
+                  ),
+                  Icon(
+                    Icons.more_vert,
+                    color: Colors.blue.shade300,
+                    size: 25.sp,
+                  ),
                 ],
               ),
             ),
-          ),
-          const Divider(height: 0.5, color: Colors.grey),
-          SingleChildScrollView(
-            child: Container(
+//? End the (SearchBox design)..
+
+//? PC...It's a widget that I create for easy the code...
+            PC(
+              icon: Icons.person_search_rounded,
+              text: 'Create New Contacts',
+            ),
+            PC(
+              icon: Icons.person_add_alt_1,
+              text: 'Add New Contacts',
+            ),
+            PC(
+              icon: Icons.message,
+              text: 'Send Message',
+            ),
+
+            SizedBox(
+              height: 8.h,
+            ),
+            Padding(
+              padding: const EdgeInsets.only(
+                left: 30,
+                top: 10,
+                bottom: 20,
+              ),
+              child: Text(
+                'Suggested Contacts',
+                style: TextStyle(
+                  fontSize: 14.sp,
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+//!
+            ContactN(text: 'N', label: 'Nusrat'),
+            SizedBox(
+              height: 10.h,
+            ),
+            ContactN(text: 'R', label: 'Ritu'),
+            SizedBox(
+              height: 10.h,
+            ),
+            ContactN(text: 'S', label: 'Sweety'),
+            SizedBox(
+              height: 15.h,
+            ),
+//?
+            Container(
               color: Colors.grey.shade300,
-              height: 70.0,
+              alignment: Alignment.centerRight,
+              padding: const EdgeInsets.all(16.0),
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  // IconButton(
-                  //   icon: const Icon(Icons.backspace),
-                  //   onPressed: () {
-                  // setState(() {
-                  //   if (phoneNumber.isNotEmpty) {
-                  //     phoneNumber =
-                  //         phoneNumber.substring(0, phoneNumber.length - 1);
-                  //   }
-                  // });
-                  //   },
-                  // ),
-                  // IconButton(
-                  //   icon: const Icon(Icons.call),
-                  //   onPressed: () {
-                  //     // Place your call logic here
-                  //     // print('Calling $phoneNumber');
-                  //   },
-                  // ),
-                  InkWell(
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          PageRouteBuilder(
-                            pageBuilder:
-                                (context, animation, secondaryAnimation) =>
-                                    const CallingP(),
-                          ));
+                  Text(
+                    phoneNumber,
+                    style: TextStyle(
+                        fontSize: 32.0.sp, fontWeight: FontWeight.bold),
+                  ),
+                  SizedBox(
+                    width: 20.w,
+                  ),
+                  IconButton(
+                    onPressed: () {
+                      setState(
+                        () {
+                          if (phoneNumber.isNotEmpty) {
+                            phoneNumber = phoneNumber.substring(
+                                0, phoneNumber.length - 1);
+                          }
+                        },
+                      );
                     },
-                    child: Container(
-                      padding: const EdgeInsets.all(5),
-                      height: 50,
-                      width: 80,
-                      decoration: BoxDecoration(
-                        color: Colors.blue.shade400,
-                        borderRadius: const BorderRadius.all(
-                          Radius.circular(22),
-                        ),
-                      ),
-                      child: const Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    icon: Icon(
+                      Icons.backspace_outlined,
+                      size: 30.sp,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Divider(height: 1.h, color: Colors.grey),
+            Expanded(
+              child: Container(
+                color: Colors.grey.shade300,
+                child: Column(
+                  children: [
+                    Expanded(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
-                          Icon(
-                            Icons.call,
-                            size: 20,
-                            color: Colors.white,
-                          ),
-                          Text(
-                            'Call',
-                            style: TextStyle(
-                              fontSize: 20,
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          )
+                          _buildNumberButton('1'),
+                          _buildNumberButton('2'),
+                          _buildNumberButton('3'),
                         ],
                       ),
                     ),
-                  ),
-                ],
+                    Expanded(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          _buildNumberButton('4'),
+                          _buildNumberButton('5'),
+                          _buildNumberButton('6'),
+                        ],
+                      ),
+                    ),
+                    Expanded(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          _buildNumberButton('7'),
+                          _buildNumberButton('8'),
+                          _buildNumberButton('9'),
+                        ],
+                      ),
+                    ),
+                    Expanded(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          _buildNumberButton('*'),
+                          _buildNumberButton('0'),
+                          _buildNumberButton('#'),
+                        ],
+                      ),
+                    ),
+                    SizedBox(
+                      height: 7.h,
+                    )
+                  ],
+                ),
               ),
             ),
-          ),
-        ],
+            Divider(height: 0.5.h, color: Colors.grey),
+            SingleChildScrollView(
+              child: Container(
+                color: Colors.grey.shade300,
+                height: 50.0.h,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    // IconButton(
+                    //   icon: const Icon(Icons.backspace),
+                    //   onPressed: () {
+                    // setState(() {
+                    //   if (phoneNumber.isNotEmpty) {
+                    //     phoneNumber =
+                    //         phoneNumber.substring(0, phoneNumber.length - 1);
+                    //   }
+                    // });
+                    //   },
+                    // ),
+                    // IconButton(
+                    //   icon: const Icon(Icons.call),
+                    //   onPressed: () {
+                    //     // Place your call logic here
+                    //     // print('Calling $phoneNumber');
+                    //   },
+                    // ),
+                    InkWell(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            PageRouteBuilder(
+                              pageBuilder:
+                                  (context, animation, secondaryAnimation) =>
+                                      const CallingP(),
+                            ));
+                      },
+                      child: Container(
+                        padding: const EdgeInsets.all(5),
+                        height: 40.h,
+                        width: 70.w,
+                        decoration: BoxDecoration(
+                          color: Colors.blue.shade400,
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(22.r),
+                          ),
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            Icon(
+                              Icons.call,
+                              size: 20.sp,
+                              color: Colors.white,
+                            ),
+                            Text(
+                              'Call',
+                              style: TextStyle(
+                                fontSize: 20.sp,
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -294,14 +308,14 @@ class _DialPadScreenState extends State<DialPadScreen> {
         style: ElevatedButton.styleFrom(
           shape: const CircleBorder(),
           backgroundColor: Colors.white,
-          minimumSize: const Size(5, 50),
+          minimumSize: Size(3.w, 40.h),
         ),
         onPressed: () {
           updatePhoneNumber(number);
         },
         child: Text(
           number,
-          style: const TextStyle(fontSize: 24.0, color: Colors.black),
+          style: TextStyle(fontSize: 22.0.sp, color: Colors.black),
         ),
       ),
     );
