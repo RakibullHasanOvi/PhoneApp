@@ -12,6 +12,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
+//! ScreenUtilInit is a widget that helps for app responsive.
       builder: (context, child) => MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Flutter Demo',
@@ -20,6 +21,7 @@ class MyApp extends StatelessWidget {
         ),
         home: const HomePage(),
       ),
+//! designSize peramitar provides screen size..
       designSize: const Size(360, 640),
     );
   }
